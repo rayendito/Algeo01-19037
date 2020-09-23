@@ -24,8 +24,9 @@ class mainMatriks{
 
 			//panggil prosedur bacaMatriks
 			M.bacaMatriks(baris, kolom);
-
-			//panggil prosedur tulisMatriks
+			//tes gauss
+			M.gauss(baris, kolom);
+			//panggil prosedur tulisMatriks setelah dijadikan eselon baris
 			M.tulisMatriks(baris, kolom);
 	  	}
 	  	//jika input dengan file
