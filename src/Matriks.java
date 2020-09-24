@@ -3,19 +3,19 @@ import java.io.*;
 
 class Matriks{
 	//Atribut
-	float[][] muatriks;
+	double[][] muatriks;
 	int brs;
 	int kol;
 
 	//Method
 
 	void bacaMatriks() {
-		this.muatriks = new float[this.brs][this.kol];
+		this.muatriks = new double[this.brs][this.kol];
 		Scanner input = new Scanner (System.in);
 		int i,j;
 		for (i=0; i<this.brs; i++){
 			for (j=0; j<this.kol; j++){
-				this.muatriks[i][j] = input.nextFloat();
+				this.muatriks[i][j] = input.nextDouble();
 			}
 		}
 	}
@@ -41,7 +41,7 @@ class Matriks{
 
 	// tukarbaris (Tested)
 	void tukarBaris(int brs1, int brs2){
-		float tmp;
+		double tmp;
 		for(int j=0; j<=lastKolom(); j++){
 			tmp = this.muatriks[brs1][j];
 			this.muatriks[brs1][j] = this.muatriks[brs2][j];
@@ -71,8 +71,8 @@ class Matriks{
 	}
 
 	// Determinan dengan reduksi baris
-	public float detRed(){
-		float det;
+	public double detRed(){
+		double det;
 		if (this.brs == 1){
 			det = this.muatriks[0][0];
 		}else if (this.brs == 2){
@@ -101,7 +101,7 @@ class Matriks{
 			for (int klm = 0; klm<=lastKolom(); klm++){
 				for (int i = klm+1; i<=lastBaris(); i++){
 					if (this.muatriks[i][klm] != 0){
-						float rate = this.muatriks[i][klm]/this.muatriks[klm][klm];
+						double rate = this.muatriks[i][klm]/this.muatriks[klm][klm];
 						for (int k = klm; k<=lastKolom(); k++){
 							this.muatriks[i][k] -= rate*this.muatriks[klm][k];
 						}
@@ -118,7 +118,7 @@ class Matriks{
 
 	void gauss(){
 		int i,j,k,l;
-		float faktor;
+		double faktor;
 		boolean rowDone=false;
 		for(i=0; i<this.brs; i++){
 			for(j=0; j<this.kol; j++){
