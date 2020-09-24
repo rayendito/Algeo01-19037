@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-class mainMatriks{
+class Main{
 	public static void main(String[] args){
 		//ini adalah scanner :)
 		Scanner input = new Scanner (System.in);
