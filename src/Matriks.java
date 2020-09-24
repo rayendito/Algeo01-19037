@@ -30,6 +30,25 @@ class Matriks{
 		}
 	}
 
+	// getlast baris kolom (Tested)
+	int lastBaris(){
+		return this.brs-1;
+	}
+
+	int lastKolom(){
+		return this.kol-1;
+	}
+
+	// tukarbaris (Tested)
+	void tukarbaris(int brs1, int brs2){
+		float tmp;
+		for(int j=0; j<=lastKolom(); j++){
+			tmp = this.muatriks[brs1][j];
+			this.muatriks[brs1][j] = this.muatriks[brs2][j];
+			this.muatriks[brs2][j] = tmp; 
+		} 
+	}
+
 	void gauss(){
 		int i,j,k,l;
 		float faktor;
