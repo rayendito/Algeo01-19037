@@ -139,6 +139,9 @@ class Matriks{
 			rowDone = false;
 		}
 	}
+	public boolean isPersegi() {
+		return(this.brs == this.kol);
+	}
 }
 
 

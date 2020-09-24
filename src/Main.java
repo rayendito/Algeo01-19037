@@ -30,6 +30,12 @@ class Main{
 			M.gauss();
 			//panggil prosedur tulisMatriks setelah dijadikan eselon baris
 			M.tulisMatriks();
+			
+			//tes apakah matriks persegi
+			if(M.isPersegi()) {
+				System.out.println("matriks persegi");
+			}
+			else System.out.println("matriks tidak persegi");
 	  	}
 	  	//jika input dengan file
 		else if (bac.equals("file")){
