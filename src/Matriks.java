@@ -40,13 +40,34 @@ class Matriks{
 	}
 
 	// tukarbaris (Tested)
-	void tukarbaris(int brs1, int brs2){
+	void tukarBaris(int brs1, int brs2){
 		float tmp;
 		for(int j=0; j<=lastKolom(); j++){
 			tmp = this.muatriks[brs1][j];
 			this.muatriks[brs1][j] = this.muatriks[brs2][j];
 			this.muatriks[brs2][j] = tmp; 
 		} 
+	}
+
+	// urutmatriks biar gaus,determinan lancarr (Tested)
+	void urutMatriks(){
+		// urut per kolom
+		int idxpertama = 0;
+		int j = 0;
+		while ((j<=lastKolom()) && (idxpertama != lastBaris())){
+			for(int i=idxpertama; i<=lastBaris(); i++){
+				for(int k=idxpertama; k<=lastBaris()-1; k++){
+					if (this.muatriks[k+1][j] > this.muatriks[k][j]){
+						tukarBaris(k, k+1);
+					}
+				}
+			}
+			// mencari kolom 0 pertama
+			while ((idxpertama<=lastBaris()) && (this.muatriks[idxpertama][j] != 0)){
+				idxpertama++;
+			}
+			j++;
+		}
 	}
 
 	void gauss(){
