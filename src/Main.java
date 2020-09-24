@@ -26,6 +26,9 @@ class Main{
 			M.bacaMatriks();
 
 			M.tulisMatriks();
+
+			// tes determinan
+			System.out.println("determinannya: " + M.detRed());
 			//tes gauss
 			M.gauss();
 			//panggil prosedur tulisMatriks setelah dijadikan eselon baris
