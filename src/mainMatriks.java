@@ -12,22 +12,24 @@ class mainMatriks{
 
 	  	//jika input manual
 	  	if (bac.equals("manual")){
-	  		//input baris dan kolom
+			  //buat objek
+			Matriks M = new Matriks();
+	  		
+			//input baris dan kolom
 			System.out.print("Masukkan jumlah baris: ");
-			int baris = input.nextInt();
+			M.brs = input.nextInt();
 
 			System.out.print("Masukkan jumlah kolom: ");
-			int kolom = input.nextInt();
-
-			//buat objek
-			Matriks M = new Matriks();
+			M.kol = input.nextInt();
 
 			//panggil prosedur bacaMatriks
-			M.bacaMatriks(baris, kolom);
+			M.bacaMatriks();
+
+			M.tulisMatriks();
 			//tes gauss
-			M.gauss(baris, kolom);
+			M.gauss();
 			//panggil prosedur tulisMatriks setelah dijadikan eselon baris
-			M.tulisMatriks(baris, kolom);
+			M.tulisMatriks();
 	  	}
 	  	//jika input dengan file
 		else if (bac.equals("file")){
