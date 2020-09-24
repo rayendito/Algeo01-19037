@@ -139,6 +139,28 @@ class Matriks{
 			rowDone = false;
 		}
 	}
+
+	void gaussJordan(){
+		//kalo mau manggil ini, panggil method gauss dulu
+		int i,j,k,l;
+		float faktor;
+		boolean rowDone=false;
+		for(i=this.brs-1; i>=0; i--){
+			for(j=0; j<this.kol; j++){
+				if(this.muatriks[i][j]==1 && !rowDone){
+					for(k=i-1; k>=0; k--){
+						faktor = this.muatriks[k][j];
+						for(l=j; l<this.kol; l++){
+							this.muatriks[k][l] -= (faktor*this.muatriks[i][l]);
+						}
+					}
+					rowDone = true;
+				}
+			}
+			rowDone = false;
+		}
+	}
+
 	public boolean isPersegi() {
 		return(this.brs == this.kol);
 	}
