@@ -143,7 +143,7 @@ class Matriks{
 	void gaussJordan(){
 		//kalo mau manggil ini, panggil method gauss dulu
 		int i,j,k,l;
-		float faktor;
+		double faktor;
 		boolean rowDone=false;
 		for(i=this.brs-1; i>=0; i--){
 			for(j=0; j<this.kol; j++){
