@@ -175,6 +175,33 @@ class Matriks{
 	public boolean isPersegi() {
 		return(this.brs == this.kol);
 	}
+	
+	void cramer(){
+		if(this.brs == this.kol -1) {
+			int i,j,k,l;
+			double hasil,detAwal;
+			Matriks M1 = new Matriks();
+			Matriks M2 = new Matriks();
+			M1.muatriks = new double[this.brs][this.kol-1];
+			for (i=0; i<=M1.lastBaris(); i++){
+				for (j=0; j<=M1.lastKolom(); j++){
+					M1.muatriks[i][j] = this.muatriks[i][j];
+				}
+			}
+			System.out.println("tes");
+			M1.tulisMatriks();
+			detAwal = M1.detRed();
+			for(j=0;j<=M1.lastKolom();j++) {
+				System.out.println("tes");
+				M2 = M1;
+				for(i=0;i<=M1.lastBaris();i++) {
+					M2.muatriks[i][j] = this.muatriks[i][this.lastKolom()];
+				}
+				hasil = M2.detRed();
+				System.out.println("x" + j + " = " + (hasil / detAwal));
+			}
+		}
+	}
 }
 
 

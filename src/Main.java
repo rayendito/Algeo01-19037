@@ -39,6 +39,11 @@ class Main{
 				System.out.println("matriks persegi");
 			}
 			else System.out.println("matriks tidak persegi");
+			
+			//tes cramer
+			System.out.println("Hasil tes Cramer : ");
+			M.cramer();
+			
 	  	}
 	  	//jika input dengan file
 		else if (bac.equals("file")){
