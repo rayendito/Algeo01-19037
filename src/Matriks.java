@@ -119,9 +119,20 @@ class Matriks{
 	void gauss(){
 		int i,j,k,l;
 		double faktor;
-		boolean rowDone=false;
+		boolean rowDone=false, found=false;
 		for(i=0; i<this.brs; i++){
 			for(j=0; j<this.kol; j++){
+				if (i==j && this.muatriks[i][j] == 0){
+					k=i+1;
+					while(k<this.brs && !found){
+						if(this.muatriks[k][j] != 0){
+							tukarBaris(i,k);
+							found = true;
+						}
+						k++;
+					}
+					found = false;
+				}
 				if (this.muatriks[i][j]!=0 && !(rowDone)){
 					faktor = this.muatriks[i][j];
 					for(k=j; k<this.kol; k++){
