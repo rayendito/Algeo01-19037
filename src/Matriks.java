@@ -80,6 +80,29 @@ class Matriks{
 		}
 	}
 
+	// copymatriks (Tested) cara pakai -> double[][] variable = copyMatriks()
+	public double[][] copyMatriks(){
+		double[][] copy = new double[this.brs][this.kol];
+		for (int i=0; i<=lastBaris(); i++){
+			for (int j=0; j<=lastKolom(); j++){
+				copy[i][j] = this.muatriks[i][j];
+			}
+		}
+		return copy;
+	}
+
+	// Transpose (Tested)
+	void Transpose(){
+		if (isPersegi()){
+			double[][] tmpMatriks = copyMatriks();
+			for (int i=0; i<=lastBaris(); i++){
+				for (int j=0; j<=lastKolom(); j++){
+					this.muatriks[i][j] = tmpMatriks[j][i];
+				}
+			}
+		}
+	}
+
 	// Determinan dengan reduksi baris
 	public double detRed(){
 		double det;
