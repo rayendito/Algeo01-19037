@@ -207,25 +207,46 @@ class Matriks{
 		if(this.brs == this.kol -1) {
 			int i,j,k,l;
 			double hasil,detAwal;
+			
+			//membuat matriks tanpa kolom terakhir
 			Matriks M1 = new Matriks();
+			M1.muatriks = new double[this.brs][this.kol -1];
+			M1.brs = this.brs;
+			M1.kol = this.kol -1;
+			
+			//membuat matriks dummy
 			Matriks M2 = new Matriks();
-			M1.muatriks = new double[this.brs][this.kol-1];
+			M2.muatriks = new double[this.brs][this.kol-1];
+			M2.brs = this.brs;
+			M2.kol = this.kol -1;
+			
+			//mengisi setiap elemen M1 dengan elemen M tanpa kolom terakhir
 			for (i=0; i<=M1.lastBaris(); i++){
 				for (j=0; j<=M1.lastKolom(); j++){
 					M1.muatriks[i][j] = this.muatriks[i][j];
 				}
 			}
-			System.out.println("tes");
-			M1.tulisMatriks();
+			//determinan awal
 			detAwal = M1.detRed();
+			
 			for(j=0;j<=M1.lastKolom();j++) {
-				System.out.println("tes");
-				M2 = M1;
+				
+				//membuat salinan matriks M1
+				for (k=0; k<=M1.lastBaris(); k++){
+					for (l=0; l<=M1.lastKolom(); l++){
+						M2.muatriks[k][l] = M1.muatriks[k][l];
+					}
+				}
+				
+				//substitusi kolom terakhir kepada seiap kolom M2
 				for(i=0;i<=M1.lastBaris();i++) {
 					M2.muatriks[i][j] = this.muatriks[i][this.lastKolom()];
 				}
+				
+				//determinan setelah substitusi
 				hasil = M2.detRed();
-				System.out.println("x" + j + " = " + (hasil / detAwal));
+				//setiap variabel dinamai huruf "x" diikuti angka urutan variabel tersebut
+				System.out.println("x" + (j+1) + " = " + (hasil / detAwal));
 			}
 		}
 	}
