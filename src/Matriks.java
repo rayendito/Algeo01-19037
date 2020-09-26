@@ -46,7 +46,17 @@ class Matriks{
 			tmp = this.muatriks[brs1][j];
 			this.muatriks[brs1][j] = this.muatriks[brs2][j];
 			this.muatriks[brs2][j] = tmp; 
-		} 
+		}
+	}
+
+	// tukarkolom (Tested)
+	void tukarKolom(int kol1, int kol2){
+		double tmp;
+		for(int i=0; i<=lastBaris(); i++){
+			tmp = this.muatriks[i][kol1];
+			this.muatriks[i][kol1] = this.muatriks[i][kol2];
+			this.muatriks[i][kol2] = tmp; 
+		}
 	}
 
 	// urutmatriks biar gaus,determinan lancarr (Tested)
@@ -73,45 +83,39 @@ class Matriks{
 	// Determinan dengan reduksi baris
 	public double detRed(){
 		double det;
-		if (this.brs == 1){
-			det = this.muatriks[0][0];
-		}else if (this.brs == 2){
-			det = (this.muatriks[0][0]*this.muatriks[1][1])-(this.muatriks[0][1]*this.muatriks[1][0]);
-		}else{
-			det = 1;
-			// Di urut terlebihdahulu
-			int idxpertama = 0;
-			int j = 0;
-			while ((j<=lastKolom()) && (idxpertama != lastBaris())){
-				for(int i=idxpertama; i<=lastBaris(); i++){
-					for(int k=idxpertama; k<=lastBaris()-1; k++){
-						if (this.muatriks[k+1][j] > this.muatriks[k][j]){
-							tukarBaris(k, k+1);
-							det *= -1;
-						}
-					}
-				}
-				// mencari kolom 0 pertama
-				while ((idxpertama<=lastBaris()) && (this.muatriks[idxpertama][j] != 0)){
-					idxpertama++;
-				}
-				j++;
-			}
-			// Reduksi baris
-			for (int klm = 0; klm<=lastKolom(); klm++){
-				for (int i = klm+1; i<=lastBaris(); i++){
-					if (this.muatriks[i][klm] != 0){
-						double rate = this.muatriks[i][klm]/this.muatriks[klm][klm];
-						for (int k = klm; k<=lastKolom(); k++){
-							this.muatriks[i][k] -= rate*this.muatriks[klm][k];
-						}
+		det = 1;
+		// Di urut terlebihdahulu
+		int idxpertama = 0;
+		int j = 0;
+		while ((j<=lastKolom()) && (idxpertama != lastBaris())){
+			for(int i=idxpertama; i<=lastBaris(); i++){
+				for(int k=idxpertama; k<=lastBaris()-1; k++){
+					if (this.muatriks[k+1][j] > this.muatriks[k][j]){
+						tukarBaris(k, k+1);
+						det *= -1;
 					}
 				}
 			}
-			// Cari determinan dengan perkalian diagonal utamanya
-			for (int i = 0; i<=lastBaris(); i++){
-				det *= this.muatriks[i][i];
+			// mencari kolom 0 pertama
+			while ((idxpertama<=lastBaris()) && (this.muatriks[idxpertama][j] != 0)){
+				idxpertama++;
 			}
+			j++;
+		}
+		// Reduksi baris
+		for (int klm = 0; klm<=lastKolom(); klm++){
+			for (int i = klm+1; i<=lastBaris(); i++){
+				if (this.muatriks[i][klm] != 0){
+					double rate = this.muatriks[i][klm]/this.muatriks[klm][klm];
+					for (int k = klm; k<=lastKolom(); k++){
+						this.muatriks[i][k] -= rate*this.muatriks[klm][k];
+					}
+				}
+			}
+		}
+		// Cari determinan dengan perkalian diagonal utamanya
+		for (int i = 0; i<=lastBaris(); i++){
+			det *= this.muatriks[i][i];
 		}
 		return det;
 	}
