@@ -160,6 +160,17 @@ class Matriks{
 		return mCofactor;
 	}
 
+	// Determinan dengan ekspansi cofactor (Tested)
+	public double detEx(){
+		double[][] cofactor = mCofactor();
+		double det = 0;
+		for(int j=0; j<=lastKolom(); j++){
+				det += cofactor[0][j]*this.muatriks[0][j];
+		}
+		
+		return det;
+	}
+
 	// Determinan dengan reduksi baris (Tested)
 	public double detRed(){
 		double det;
