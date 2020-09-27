@@ -267,6 +267,53 @@ class Matriks{
 			}
 		}
 	}
+
+	void interpolasi(){
+		int i,j;
+		Scanner input = new Scanner (System.in);
+		System.out.print("Masukkan jumlah n: ");
+		int n = input.nextInt();
+		double[][] masukan = new double[n][2];
+		double[][] polinom = new double[n][n+1];
+		//masukan (x,y)
+		for (i=0; i<n; i++){
+			for (j=0; j<2; j++){
+				masukan[i][j] = input.nextDouble();
+			}
+		}
+
+		//menjadikannya polinom berderajat 2
+		for (i=0; i<n; i++){
+			for (j=0; j<n+1; j++){
+				if (j==n) polinom[i][j] = masukan[i][1];
+				else{
+					polinom[i][j]=Math.pow(masukan[i][0],j);
+				}
+			}
+		}
+
+		//menjadikan variabel-variabel berikut agar dapat dieliminasi
+		this.muatriks = polinom;
+		this.brs = n;
+		this.kol = n+1;
+		
+		//lakukan eliminasi pada matriks
+		gauss();
+		gaussJordan();
+
+		//cetak persamaan polinom dan hasil taksirnya
+		System.out.println("persamaannya adalah: ");
+		System.out.print("f(x) = ");
+		for(i=0; i<n; i++){
+			if (i==0) System.out.print(this.muatriks[i][n]);
+			else{
+				if (this.muatriks[i][n] >= 0) System.out.print(" + "+this.muatriks[i][n]+"x^"+i);
+				else System.out.print(" "+this.muatriks[i][n]+"x^"+i);
+			}
+		}
+		System.out.println("");
+	}
+
 }
 
 
