@@ -7,7 +7,7 @@ class Main{
 		Scanner input = new Scanner (System.in);
 
 		//input perintah baca file atau input manual
-		System.out.print("Baca file atau input manual? (file/manual) : ");
+		System.out.print("Baca file atau input manual? (file/manual/interpol) : ");
 	  	String bac = input.nextLine();
 
 	  	//jika input manual
@@ -51,6 +51,10 @@ class Main{
 	  		String namaFile = input.nextLine();
 
 	  		System.out.println("terus yoopo iki hayo aku ga ngerti wkwk");
+	  	}
+	  	else if (bac.equals("interpol")){
+	  		Matriks M = new Matriks();
+	  		M.interpolasi();
 	  	}
 	}
 }
