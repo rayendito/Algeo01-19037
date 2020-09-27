@@ -112,10 +112,18 @@ class Matriks{
 		int j = 0;
 		while ((j<=lastKolom()) && (idxpertama != lastBaris())){
 			for(int i=idxpertama; i<=lastBaris(); i++){
-				for(int k=idxpertama; k<=lastBaris()-1; k++){
-					if (this.muatriks[k+1][j] > this.muatriks[k][j]){
-						tukarBaris(k, k+1);
-						det *= -1;
+				for(int k=idxpertama; k<=lastBaris(); k++){
+					if (this.muatriks[k][j] == 0){
+						int l = k+1;
+						boolean found = false;
+						while(l<=lastBaris() && !found){
+							if(this.muatriks[l][j] != 0){
+								found = true;
+								tukarBaris(k, l);
+								det *= -1;
+							}
+							l++;
+						}
 					}
 				}
 			}
