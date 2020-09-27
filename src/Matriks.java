@@ -143,6 +143,16 @@ class Matriks{
 		return det;
 	}
 
+	public boolean isBarisNol(int bar) {
+		int j=0;
+		boolean nol=true;
+		while(j<this.kol && nol){
+			if(this.muatriks[bar][j] != 0) nol=false;
+			j++;
+		}
+		return nol;
+	}
+
 	void gauss(){
 		int i,j,k,l;
 		double faktor;
@@ -175,6 +185,13 @@ class Matriks{
 				}
 			}
 			rowDone = false;
+		}
+		for(i=0; i<this.brs-1; i++){
+			if(isBarisNol(i)){
+				if(!isBarisNol(i+1)){
+					tukarBaris(i, i+1);
+				}
+			}
 		}
 	}
 
