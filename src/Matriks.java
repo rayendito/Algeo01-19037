@@ -173,6 +173,7 @@ class Matriks{
 
 	// Determinan dengan reduksi baris (Tested)
 	public double detRed(){
+		double[][] tmp = copyMatriks();
 		double det;
 		det = 1;
 		// Di urut terlebihdahulu
@@ -216,7 +217,25 @@ class Matriks{
 		for (int i = 0; i<=lastBaris(); i++){
 			det *= this.muatriks[i][i];
 		}
+		this.muatriks = tmp;
 		return det;
+	}
+
+	// adjoin (Tested)
+	void adjoin(){
+		this.muatriks = mCofactor();
+		Transpose();
+	}
+
+	// inverse menggunakan adjoin (Tested)
+	void inverseAdj(){
+		double det = detEx();
+		adjoin();
+		for (int i=0; i<=lastBaris(); i++){
+			for (int j=0; j<=lastKolom(); j++){
+				this.muatriks[i][j] = this.muatriks[i][j]/det;
+			}
+		}
 	}
 
 	void gauss(){
