@@ -59,6 +59,16 @@ class Matriks{
 		}
 	}
 
+	public boolean isBarisNol(int bar) {
+		int j=0;
+		boolean nol=true;
+		while(j<this.kol && nol){
+			if(this.muatriks[bar][j] != 0) nol=false;
+			j++;
+		}
+		return nol;
+	}
+
 	// urutmatriks biar gaus,determinan lancarr (Tested)
 	void urutMatriks(){
 		// urut per kolom
@@ -103,7 +113,54 @@ class Matriks{
 		}
 	}
 
-	// Determinan dengan reduksi baris
+	// Matriks cofactor (Tested)
+	public double[][] mCofactor(){
+		double[][] tmp = copyMatriks();
+		double[][] mCofactor = copyMatriks();
+		
+		int k,l,bariske,kolomke;
+		for (int i=0; i<=lastBaris(); i++){
+			for (int j=0; j<=lastKolom(); j++){
+				this.brs--;
+				this.kol--;
+				//bikin matriks minor dulu
+				k = 0;
+				l = 0;
+				bariske = 0;
+				kolomke = 0;
+				while(k<=lastBaris()){
+					l = 0;
+					kolomke = 0;
+					while(l<=lastKolom()){
+						if (bariske==i){
+							bariske++;
+						}
+						if (kolomke==j){
+							kolomke++;
+						}
+						this.muatriks[k][l] = tmp[bariske][kolomke];
+						l++;
+						kolomke++;
+					}
+					k++;
+					bariske++;
+				}
+				//assign elemen matriks cofactor
+				if((i+j)%2 == 1){
+					mCofactor[i][j] = -1*detRed();
+				}else{
+					mCofactor[i][j] = detRed();
+				}
+				this.brs++;
+				this.kol++;
+			}
+		}
+		this.muatriks = tmp;
+		
+		return mCofactor;
+	}
+
+	// Determinan dengan reduksi baris (Tested)
 	public double detRed(){
 		double det;
 		det = 1;
@@ -149,16 +206,6 @@ class Matriks{
 			det *= this.muatriks[i][i];
 		}
 		return det;
-	}
-
-	public boolean isBarisNol(int bar) {
-		int j=0;
-		boolean nol=true;
-		while(j<this.kol && nol){
-			if(this.muatriks[bar][j] != 0) nol=false;
-			j++;
-		}
-		return nol;
 	}
 
 	void gauss(){
