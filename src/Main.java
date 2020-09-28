@@ -29,10 +29,13 @@ class Main{
 
 			// tes determinan
 			System.out.println("determinannya: " + M.detRed());
+			
 			//tes gauss
 			M.gauss();
+			M.gaussJordan();
 			//panggil prosedur tulisMatriks setelah dijadikan eselon baris
 			M.tulisMatriks();
+			M.solusi();
 			
 			//tes apakah matriks persegi
 			if(M.isPersegi()) {

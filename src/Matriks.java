@@ -300,6 +300,28 @@ class Matriks{
 			rowDone = false;
 		}
 	}
+	
+	public void solusi() {
+		int i,j,k;
+		String hasil = "";
+		for(i=0;i<=this.brs-1;i++) {
+			if(this.muatriks[i][i] == 1) {
+				hasil = "x" + (i+1) + " = " + this.muatriks[i][this.kol-1];
+				for(j=0;j<=this.kol-2;j++) {
+					if((j != i) && (this.muatriks[i][j] != 0)) {
+						if(this.muatriks[i][j] < 0) {
+						hasil = hasil + " + " + this.muatriks[i][j] + " x" + (j+1); 
+						}
+						else {
+							hasil = hasil + " - " + this.muatriks[i][j] + " x" + (j+1); 
+						}
+					}
+				}
+			}
+		System.out.println(hasil);
+		}
+		
+	}
 
 	public boolean isPersegi() {
 		return(this.brs == this.kol);
