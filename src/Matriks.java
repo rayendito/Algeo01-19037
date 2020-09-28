@@ -305,20 +305,22 @@ class Matriks{
 		int i,j,k;
 		String hasil = "";
 		for(i=0;i<=this.brs-1;i++) {
-			if(this.muatriks[i][i] == 1) {
-				hasil = "x" + (i+1) + " = " + this.muatriks[i][this.kol-1];
-				for(j=0;j<=this.kol-2;j++) {
-					if((j != i) && (this.muatriks[i][j] != 0)) {
-						if(this.muatriks[i][j] < 0) {
-						hasil = hasil + " + " + this.muatriks[i][j] + " x" + (j+1); 
-						}
-						else {
-							hasil = hasil + " - " + this.muatriks[i][j] + " x" + (j+1); 
+			if(!(this.barisKosong(i))) {
+				if(this.muatriks[i][i] == 1) {
+					hasil = "x" + (i+1) + " = " + this.muatriks[i][this.kol-1];
+					for(j=0;j<=this.kol-2;j++) {
+						if((j != i) && (this.muatriks[i][j] != 0)) {
+							if(this.muatriks[i][j] < 0) {
+							hasil = hasil + " + " + (-(this.muatriks[i][j])) + " x" + (j+1); 
+							}
+							else {
+								hasil = hasil + " - " + this.muatriks[i][j] + " x" + (j+1); 
+							}
 						}
 					}
 				}
+				System.out.println(hasil);
 			}
-		System.out.println(hasil);
 		}
 		
 	}
@@ -375,6 +377,26 @@ class Matriks{
 		}
 	}
 
+	public boolean barisKosong(int n) {
+		int j;
+		for(j=0;j<=this.kol-1;j++) {
+			if(this.muatriks[n][j] != 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public boolean kolomKosong(int n) {
+		int i;
+		for(i=0;i<=this.brs-1;i++) {
+			if(this.muatriks[i][n] != 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	void interpolasi(){
 		int i,j;
 		Scanner input = new Scanner (System.in);
