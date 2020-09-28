@@ -404,6 +404,19 @@ class Matriks{
 		return true;
 	}
 	
+	public boolean inkonsisten(int n) {
+		int j;
+		for(j=0;j<=this.kol-2;j++) {
+			if(this.muatriks[n][j] != 0) {
+				return false;
+			}
+		}
+		if (this.muatriks[n][this.kol-1] == 0) {
+			return false;
+		}
+		return true;
+	}
+	
 	void interpolasi(){
 		int i,j;
 		Scanner input = new Scanner (System.in);
