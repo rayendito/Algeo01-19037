@@ -303,6 +303,8 @@ class Matriks{
 	
 	public void solusi() {
 		int i,j,k;
+		int varnumber = 97;
+		char var;
 		String hasil = "";
 		for(i=0;i<=this.brs-1;i++) {
 			if(!(this.barisKosong(i))) {
@@ -319,8 +321,13 @@ class Matriks{
 						}
 					}
 				}
-				System.out.println(hasil);
 			}
+			else if(this.muatriks[i][i] == 0) {
+				var = (char)varnumber;
+				hasil = "x" + (i+1) + " = " + var;
+				varnumber = varnumber + 1;
+			}
+			System.out.println(hasil);
 		}
 		
 	}
