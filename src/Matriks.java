@@ -461,8 +461,55 @@ class Matriks{
 			}
 		}
 		System.out.println("");
+
+		//input nilai yang ingin ditaksir
+		double total=0;
+		System.out.print("Masukkan x yang ingin ditaksir: ");
+		double taksir = input.nextDouble();
+		for(i=0; i<n; i++){
+			total += this.muatriks[i][n]*Math.pow(taksir,i);
+		}
+		System.out.println("Hasil taksiran untuk x adalah = "+total);
 	}
 
+	void balikanGJordan(){
+		int i,j;
+		//menambahkan matriks identitas ke matriks dengan matriks sementara
+		double[][] augmented = new double[this.brs][2*this.kol];
+		for(i=0; i<this.brs; i++){
+			for(j=0; j<this.kol; j++){
+				augmented[i][j] = this.muatriks[i][j];
+			}
+		}
+		for(i=0; i<this.brs; i++){
+			for(j=this.kol; j<2*this.kol; j++){
+				if(i == j-this.kol) augmented[i][j]=1;
+				else augmented[i][j] = 0;
+			}
+		}
+
+		//matriks sementara, masih ada identitas di depan matriks hasil balikan
+		this.muatriks = augmented;
+		this.brs = this.brs;
+		this.kol = 2*this.kol;
+
+		//proses
+		gauss();
+		gaussJordan();
+		
+		//mengembalikan matriks ke matriks awal
+		double[][] akhir = new double[this.brs][this.kol/2];
+		for(i=0; i<this.brs; i++){
+			for(j=0; j<this.kol/2; j++){
+				akhir[i][j] = this.muatriks[i][j+(this.kol/2)];
+			}
+		}
+
+		//mengembalikan ke matriks awal 'muatriks'
+		this.muatriks = akhir;
+		this.brs = this.brs;
+		this.kol = this.kol/2;
+	}
 }
 
 
