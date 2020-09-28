@@ -90,7 +90,7 @@ class Matriks{
 		}
 	}
 
-	// copymatriks (Tested) cara pakai -> double[][] variable = copyMatriks()
+	// copyMatriks (Tested) cara pakai -> double[][] variable = copyMatriks()
 	public double[][] copyMatriks(){
 		double[][] copy = new double[this.brs][this.kol];
 		for (int i=0; i<=lastBaris(); i++){
@@ -235,6 +235,31 @@ class Matriks{
 			for (int j=0; j<=lastKolom(); j++){
 				this.muatriks[i][j] = this.muatriks[i][j]/det;
 			}
+		}
+	}
+
+	// spl menggunakan metode matriks balikan
+	void splUsingInverse(){
+		inverseAdj();
+		double[][] toInverse = copyMatriks();
+		this.kol = 1;
+		bacaMatriks();
+		double[][] matriks2 = copyMatriks();
+
+		// Ax = b -> x = inverse(A)b (kali matriksnya)
+		for (int i=0; i<=lastBaris(); i++){
+			for (int j=0; j<=lastKolom(); j++){
+				this.muatriks[i][j] = 0;
+				for (int k=0; k<=lastBaris(); k++){
+					this.muatriks[i][j] = this.muatriks[i][j] + toInverse[i][k]*matriks2[k][j];
+				}
+			}
+		}
+
+		// menampilkan solusi splnya
+		for (int baris=0; baris<=lastBaris(); baris++){
+			int bariske = baris+1;
+			System.out.println("X"+ bariske + " = " + this.muatriks[baris][0]);
 		}
 	}
 
