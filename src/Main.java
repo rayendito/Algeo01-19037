@@ -268,20 +268,30 @@ class Main{
 				}
 				
 			}else if (menu == 5){
-				int i,j;
-				System.out.print("Masukkan jumlah data: ");
-				M.brs = input.nextInt();
-				System.out.print("Masukkan jumlah peubah: ");
-				M.kol = input.nextInt()+2;
-				for (i=0; i<M.brs; i++){
-					M.muatriks[i][0] = 1;
-				}
-				for (i=0; i<M.brs; i++){
-					for (j=1; j<M.kol; j++){
-						M.muatriks[i][j] = input.nextDouble();
+				Scanner ingput = new Scanner(System.in);
+				System.out.print("Manual atau File? (manual/file) ");
+				String choose = ingput.nextLine();
+				if (choose.equals("manual")){
+					int i,j;
+					System.out.print("Masukkan jumlah data: ");
+					M.brs = input.nextInt();
+					System.out.print("Masukkan jumlah peubah: ");
+					M.kol = input.nextInt()+2;
+					for (i=0; i<M.brs; i++){
+						M.muatriks[i][0] = 1;
 					}
+					for (i=0; i<M.brs; i++){
+						for (j=1; j<M.kol; j++){
+							M.muatriks[i][j] = input.nextDouble();
+						}
+					}
+					M.regresi();
 				}
-				M.regresi();
+				else if(choose.equals("file")){
+					M.bacaFileMatriks();
+					M.regresi();
+				}
+				
 			}else if (menu == 6){
 				isMenu = false;
 			}
