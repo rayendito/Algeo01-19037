@@ -281,7 +281,7 @@ class Main{
 						M.muatriks[i][j] = input.nextDouble();
 					}
 				}
-					M.regresi();
+				M.regresi();
 			}else if (menu == 6){
 				isMenu = false;
 			}
