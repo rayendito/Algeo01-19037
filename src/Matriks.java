@@ -418,6 +418,9 @@ class Matriks{
 				System.out.println("x" + (j+1) + " = " + (hasil / detAwal));
 			}
 		}
+		else {
+			System.out.println("matriks tidak valid");
+		}
 	}
 
 	public boolean barisKosong(int n) {
@@ -546,6 +549,11 @@ class Matriks{
 		this.brs = this.brs;
 		this.kol = this.kol-this.brs;
 	}
+	
+	void regresi() {
+	
+	}
+		
 }
 
 

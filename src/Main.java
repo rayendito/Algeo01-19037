@@ -54,7 +54,13 @@ class Main{
 							System.out.println("Matriks bukan persegi");
 						}
 					}else if (submenu == 4){
-						//
+						System.out.print("Masukkan jumlah baris: ");
+						M.brs = input.nextInt();
+						System.out.print("Masukkan jumlah kolom: ");
+						M.kol = input.nextInt();
+						M.bacaMatriks();
+						M.cramer();
+						
 					}
 				}else if (menu == 2){
 					System.out.println("1. Metode reduksi baris");
