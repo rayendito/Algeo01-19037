@@ -397,25 +397,29 @@ class Matriks{
 			}
 			//determinan awal
 			detAwal = M1.detRed();
-			
-			for(j=0;j<=M1.lastKolom();j++) {
-				
-				//membuat salinan matriks M1
-				for (k=0; k<=M1.lastBaris(); k++){
-					for (l=0; l<=M1.lastKolom(); l++){
-						M2.muatriks[k][l] = M1.muatriks[k][l];
+			if(detAwal == 0) {
+				System.out.println("matriks tidak memiliki solusi unik");
+			}
+			else {
+				for(j=0;j<=M1.lastKolom();j++) {
+					
+					//membuat salinan matriks M1
+					for (k=0; k<=M1.lastBaris(); k++){
+						for (l=0; l<=M1.lastKolom(); l++){
+							M2.muatriks[k][l] = M1.muatriks[k][l];
+						}
 					}
+					
+					//substitusi kolom terakhir kepada seiap kolom M2
+					for(i=0;i<=M1.lastBaris();i++) {
+						M2.muatriks[i][j] = this.muatriks[i][this.lastKolom()];
+					}
+					
+					//determinan setelah substitusi
+					hasil = M2.detRed();
+					//setiap variabel dinamai huruf "x" diikuti angka urutan variabel tersebut
+					System.out.println("x" + (j+1) + " = " + (hasil / detAwal));
 				}
-				
-				//substitusi kolom terakhir kepada seiap kolom M2
-				for(i=0;i<=M1.lastBaris();i++) {
-					M2.muatriks[i][j] = this.muatriks[i][this.lastKolom()];
-				}
-				
-				//determinan setelah substitusi
-				hasil = M2.detRed();
-				//setiap variabel dinamai huruf "x" diikuti angka urutan variabel tersebut
-				System.out.println("x" + (j+1) + " = " + (hasil / detAwal));
 			}
 		}
 		else {
