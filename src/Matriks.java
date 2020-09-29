@@ -20,6 +20,47 @@ class Matriks{
 		}
 	}
 
+	void bacaFileMatriks(){
+		//inisialisasi
+		this.brs = 1;
+		this.kol = 0;
+
+		//input nama file
+		Scanner namaf = new Scanner(System.in);
+		System.out.print("Nama file : ");
+		String namafile = namaf.nextLine();
+		namafile = "../test/"+namafile;
+		
+		//menghitung ukuran matriks terlebih dahulu
+		try{
+			Scanner read = new Scanner(new File(namafile));
+			this.kol = read.nextLine().split(" ").length;
+			while (read.hasNextLine()){
+				this.brs++;
+				read.nextLine();
+			}
+			read.close();
+
+			//memasukkan data ke dalam matriks
+			Scanner baca = new Scanner(new BufferedReader(new FileReader(namafile)));
+			this.muatriks = new double[this.brs][this.kol];
+			while(baca.hasNextLine()){
+				for(int i=0; i<this.brs; i++){
+					String[] kolom = baca.nextLine().split(" ");
+					for(int j=0; j<this.kol; j++){
+						this.muatriks[i][j] = Double.parseDouble(kolom[j]);
+					}
+				}
+			}
+			
+		}
+		catch(FileNotFoundException e){
+			System.out.println("file tidak ditemukan");
+			bacaFileMatriks();
+		}
+	}
+
+
 	void tulisMatriks() {
 		int i,j;
 		for (i=0; i<this.brs; i++){
