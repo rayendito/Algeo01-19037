@@ -15,7 +15,7 @@ class Main{
 			//buat objek
 			Matriks M = new Matriks();
 			boolean isMenu = true;
-			int menu, submenu;
+			int menu, submenu, brskol;
 			while(isMenu == true){
 				System.out.println("MENU");
 				System.out.println("1. Sistem Persamaan Linear");
@@ -39,10 +39,11 @@ class Main{
 					}else if (submenu == 2){
 						//
 					}else if (submenu == 3){
-						System.out.print("Masukkan jumlah baris: ");
-						M.brs = input.nextInt();
-						System.out.print("Masukkan jumlah kolom: ");
-						M.kol = input.nextInt();
+						System.out.print("Masukkan jumlah baris/kolom(n): ");
+						brskol = input.nextInt();
+						M.brs = brskol;
+						M.kol = brskol;
+						System.out.println("Masukkan elemen matriks(aij): ");
 						M.bacaMatriks();
 						if (M.isPersegi()){
 							if (M.detRed() != 0){
@@ -68,10 +69,11 @@ class Main{
 					System.out.print("Masukkan Sub-menu: ");
 					submenu = input.nextInt();
 					if (submenu == 1){
-						System.out.print("Masukkan jumlah baris: ");
-						M.brs = input.nextInt();
-						System.out.print("Masukkan jumlah kolom: ");
-						M.kol = input.nextInt();
+						System.out.print("Masukkan jumlah baris/kolom(n): ");
+						brskol = input.nextInt();
+						M.brs = brskol;
+						M.kol = brskol;
+						System.out.println("Masukkan elemen matriks(aij): ");
 						M.bacaMatriks();
 						if(M.isPersegi()){
 							System.out.println("Determinan matriks menggunakan metode reduksi baris adalah " + M.detRed());
@@ -79,10 +81,11 @@ class Main{
 							System.out.println("Matriks bukan persegi");
 						}
 					}else if (submenu == 2){
-						System.out.print("Masukkan jumlah baris: ");
-						M.brs = input.nextInt();
-						System.out.print("Masukkan jumlah kolom: ");
-						M.kol = input.nextInt();
+						System.out.print("Masukkan jumlah baris/kolom(n): ");
+						brskol = input.nextInt();
+						M.brs = brskol;
+						M.kol = brskol;
+						System.out.println("Masukkan elemen matriks(aij): ");
 						M.bacaMatriks();
 						if(M.isPersegi()){
 							System.out.println("Determinan matriks menggunakan ekspansi kofaktor adalah " + M.detEx());
@@ -98,10 +101,11 @@ class Main{
 					if (submenu == 1){
 						
 					}else if (submenu == 2){
-						System.out.print("Masukkan jumlah baris: ");
-						M.brs = input.nextInt();
-						System.out.print("Masukkan jumlah kolom: ");
-						M.kol = input.nextInt();
+						System.out.print("Masukkan jumlah baris/kolom(n): ");
+						brskol = input.nextInt();
+						M.brs = brskol;
+						M.kol = brskol;
+						System.out.println("Masukkan elemen matriks(aij): ");
 						M.bacaMatriks();
 						if(M.isPersegi()){
 							if (M.detRed() != 0){

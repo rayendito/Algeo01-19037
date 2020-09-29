@@ -284,6 +284,7 @@ class Matriks{
 		inverseAdj();
 		double[][] toInverse = copyMatriks();
 		this.kol = 1;
+		System.out.println("Masukkan elemen matriks(bi): ");
 		bacaMatriks();
 		double[][] matriks2 = copyMatriks();
 
