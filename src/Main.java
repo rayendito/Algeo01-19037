@@ -31,9 +31,55 @@ class Main{
 				System.out.print("Masukkan Sub-menu: ");
 				submenu = input.nextInt();
 				if (submenu == 1){
-					//
+					Scanner ingput = new Scanner(System.in);
+					System.out.print("Manual atau File? (manual/file) ");
+					String choose = ingput.nextLine();
+
+					if (choose.equals("manual")){
+						System.out.print("Masukkan baris: ");
+						M.brs = ingput.nextInt();
+						System.out.print("Masukkan kolom: ");
+						M.kol = ingput.nextInt();
+						M.bacaMatriks();
+						M.gauss();
+						System.out.println("Ini adalah matriks setelah eliminasi Gauss:");
+						M.tulisMatriks();
+						M.solusi();
+					}
+					else if(choose.equals("file")){
+						M.bacaFileMatriks();
+						M.gauss();
+						System.out.println("Ini adalah matriks setelah eliminasi Gauss:");
+						M.tulisMatriks();
+						M.solusi();
+
+					}
 				}else if (submenu == 2){
-					//
+					Scanner ingput = new Scanner(System.in);
+					System.out.print("Manual atau File? (manual/file) ");
+					String choose = ingput.nextLine();
+
+					if (choose.equals("manual")){
+						System.out.print("Masukkan baris: ");
+						M.brs = ingput.nextInt();
+						System.out.print("Masukkan kolom: ");
+						M.kol = ingput.nextInt();
+						M.bacaMatriks();
+						M.gauss();
+						M.gaussJordan();
+						System.out.println("Ini adalah matriks setelah eliminasi Gauss-Jordan:");
+						M.tulisMatriks();
+						M.solusi();
+					}
+					else if(choose.equals("file")){
+						M.bacaFileMatriks();
+						M.gauss();
+						M.gaussJordan();
+						System.out.println("Ini adalah matriks setelah eliminasi Gauss-Jordan:");
+						M.tulisMatriks();
+						M.solusi();
+
+					}
 				}else if (submenu == 3){
 					Scanner ingput = new Scanner(System.in);
 					System.out.print("Manual atau File? (manual/file) ");
