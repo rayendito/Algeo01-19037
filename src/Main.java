@@ -276,7 +276,9 @@ class Main{
 					System.out.print("Masukkan jumlah data: ");
 					M.brs = input.nextInt();
 					System.out.print("Masukkan jumlah peubah: ");
-					M.kol = input.nextInt()+2;
+					M.kol = input.nextInt();
+					M.kol = M.kol + 2;
+					M.muatriks = new double[M.brs][M.kol];
 					for (i=0; i<M.brs; i++){
 						M.muatriks[i][0] = 1;
 					}
