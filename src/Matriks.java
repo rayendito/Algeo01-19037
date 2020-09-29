@@ -597,9 +597,45 @@ class Matriks{
 	}
 	
 	void regresi() {
-	
-	}
+		int i,j,k,l,x;
+		String hasil = "y = ";
+		Scanner input = new Scanner (System.in);
+		double total = 0;
+			
+		Matriks M1 = new Matriks();
+		M1.muatriks = new double[this.kol-1][this.kol];
+		M1.brs = this.kol-1;
+		M1.kol = this.kol;
+		for (i=0; i<M1.brs; i++){
+			for (j=0; j<M1.kol; j++){
+				M1.muatriks[i][j] = 0;
+			}
+		}
 		
+		for(i=0;i<M1.brs;i++) {
+			for(j=0;j<M1.kol;j++) {
+				for(k=0;k<this.brs;k++) {
+					M1.muatriks[i][j] = M1.muatriks[i][j] + (this.muatriks[k][i] * this.muatriks[k][j]);
+				}
+			}	
+		}
+		M1.gauss();
+		M1.gaussJordan();
+		hasil = hasil + M1.muatriks[0][this.kol-1];
+		for(i=1;i<M1.brs;i++) {
+			hasil = hasil + " + " + M1.muatriks[i][this.kol-1] + "";
+		}
+		System.out.println(hasil);
+		
+		total = total + M1.muatriks[0][this.kol-1];
+		for(j=1;j<this.kol-1;j++) {
+			System.out.print("Masukkan nilai x" + (j) + " : " );
+			x = input.nextInt();
+			total = total + (x * M1.muatriks[j][this.kol-1]);
+		}
+		System.out.println("Taksiran nilai fungsi adalah: " + total);
+		
+	}
 }
 
 

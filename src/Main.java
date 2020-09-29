@@ -268,7 +268,20 @@ class Main{
 				}
 				
 			}else if (menu == 5){
-				//mikir cok
+				int i,j;
+				System.out.print("Masukkan jumlah data: ");
+				M.brs = input.nextInt();
+				System.out.print("Masukkan jumlah peubah: ");
+				M.kol = input.nextInt()+2;
+				for (i=0; i<M.brs; i++){
+					M.muatriks[i][0] = 1;
+				}
+				for (i=0; i<M.brs; i++){
+					for (j=1; j<M.kol; j++){
+						M.muatriks[i][j] = input.nextDouble();
+					}
+				}
+					M.regresi();
 			}else if (menu == 6){
 				isMenu = false;
 			}
