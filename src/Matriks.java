@@ -631,28 +631,51 @@ class Matriks{
 		//lakukan eliminasi pada matriks
 		gauss();
 		gaussJordan();
+		
+		// output file
+		Scanner ingput = new Scanner(System.in);
+		System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+		System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+		String namafile = ingput.nextLine();
+		//create file dulu
+		createfile(namafile);
 
-		//cetak persamaan polinom dan hasil taksirnya
+		//cetak persamaan polinom dan hasil taksirnya, serta tulis ke file
 		System.out.println("persamaannya adalah: ");
+		outputfile("persamaannya adalah: ", namafile);
+
+		String persaman;
 		System.out.print("f(x) = ");
+		persaman = "f(x) = ";
 		for(i=0; i<this.brs; i++){
 			if (i==0) System.out.print(this.muatriks[i][this.brs]);
 			else{
-				if (this.muatriks[i][this.brs] >= 0) System.out.print(" + "+this.muatriks[i][this.brs]+"x^"+i);
-				else System.out.print(" "+this.muatriks[i][this.brs]+"x^"+i);
+				if (this.muatriks[i][this.brs] >= 0){
+					System.out.print(" + "+this.muatriks[i][this.brs]+"x^"+i);
+					persaman = persaman + " + "+this.muatriks[i][this.brs]+"x^"+i;
+				} 
+				else{
+					System.out.print(" "+this.muatriks[i][this.brs]+"x^"+i);
+					persaman = persaman + " "+this.muatriks[i][this.brs]+"x^"+i;
+				}
 			}
 		}
+		outputfile(persaman,namafile);
 		System.out.println("");
 
 		//input nilai yang ingin ditaksir
 		double total=0;
 		System.out.print("Masukkan x yang ingin ditaksir: ");
+
+		String haasil;
 		Scanner input = new Scanner(System.in);
 		double taksir = input.nextDouble();
 		for(i=0; i<this.brs; i++){
 			total += this.muatriks[i][this.brs]*Math.pow(taksir,i);
 		}
-		System.out.println("Hasil taksiran untuk x adalah = "+total);
+		System.out.println("Hasil taksiran untuk "+taksir+" adalah = "+total);
+		haasil = "Hasil taksiran untuk "+taksir+" adalah = "+total;
+		outputfile(haasil,namafile);
 	}
 
 	void balikanGJordan(){
