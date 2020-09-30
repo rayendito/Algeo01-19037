@@ -597,10 +597,14 @@ class Matriks{
 	}
 	
 	void regresi() {
-		int i,j,k,l,x;
+		int i,j,k,l;
 		String hasil = "y = ";
 		Scanner input = new Scanner (System.in);
 		double total = 0;
+		double x;
+		
+		this.tulisMatriks();
+		System.out.println("");
 			
 		Matriks M1 = new Matriks();
 		M1.muatriks = new double[this.kol-1][this.kol];
@@ -619,18 +623,31 @@ class Matriks{
 				}
 			}	
 		}
+		
+		M1.tulisMatriks();
+		System.out.println("");
+		
 		M1.gauss();
 		M1.gaussJordan();
+		
+		M1.tulisMatriks();
+		System.out.println("");
+		
 		hasil = hasil + M1.muatriks[0][this.kol-1];
 		for(i=1;i<M1.brs;i++) {
-			hasil = hasil + " + " + M1.muatriks[i][this.kol-1] + "";
+			if(M1.muatriks[i][this.kol-1] > 0) {
+				hasil = hasil + " + " + M1.muatriks[i][this.kol-1] + " x" + i;
+			}
+			else if(M1.muatriks[i][this.kol-1] < 0) {
+				hasil = hasil + " + " + (-(M1.muatriks[i][this.kol-1])) + " x" + i;
+			}
 		}
 		System.out.println(hasil);
 		
 		total = total + M1.muatriks[0][this.kol-1];
 		for(j=1;j<this.kol-1;j++) {
 			System.out.print("Masukkan nilai x" + (j) + " : " );
-			x = input.nextInt();
+			x = input.nextDouble();
 			total = total + (x * M1.muatriks[j][this.kol-1]);
 		}
 		System.out.println("Taksiran nilai fungsi adalah: " + total);
