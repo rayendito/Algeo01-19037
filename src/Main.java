@@ -170,6 +170,7 @@ class Main{
 						System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
 						System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
 						String namafile = ingput.nextLine();
+						M.createfile(namafile);
 						if(M.isPersegi()){
 							toOutput = "Determinan matriks menggunakan metode reduksi baris adalah " + M.detRed();
 							M.outputfile(toOutput, namafile);
@@ -198,6 +199,7 @@ class Main{
 						System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
 						System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
 						String namafile = ingput.nextLine();
+						M.createfile(namafile);
 						if(M.isPersegi()){
 							toOutput = "Determinan matriks menggunakan ekspansi kofaktor adalah " + M.detEx();
 							M.outputfile(toOutput, namafile);
@@ -216,6 +218,7 @@ class Main{
 						System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
 						System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
 						String namafile = ingput.nextLine();
+						M.createfile(namafile);
 						if(M.isPersegi()){
 							toOutput = "Determinan matriks menggunakan ekspansi kofaktor adalah " + M.detEx();
 							M.outputfile(toOutput, namafile);
@@ -262,15 +265,19 @@ class Main{
 						M.kol = brskol;
 						System.out.println("Masukkan elemen matriks(aij): ");
 						M.bacaMatriks();
-						if(M.isPersegi()){
-							if (M.detRed() != 0){
-								M.inverseAdj();
-								M.tulisMatriks();
-							}else{
-								System.out.println("Determinan matriks sama dengan 0");
-							}
+						if (M.detRed() != 0){
+							M.inverseAdj();
+							M.tulisMatriks();
 						}else{
-							System.out.println("Matriks bukan persegi");
+							// output file
+							String toOutput;
+							System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+							System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+							String namafile = ingput.nextLine();
+							M.createfile(namafile);
+							toOutput = "Determinan matriks sama dengan 0";
+							M.outputfile(toOutput, namafile);
+							System.out.println(toOutput);
 						}
 					}
 					else if(choose.equals("file")){
@@ -280,10 +287,26 @@ class Main{
 								M.inverseAdj();
 								M.tulisMatriks();
 							}else{
-								System.out.println("Determinan matriks sama dengan 0");
+								// output file
+								String toOutput;
+								System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+								System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+								String namafile = ingput.nextLine();
+								M.createfile(namafile);
+								toOutput = "Determinan matriks sama dengan 0";
+								M.outputfile(toOutput, namafile);
+								System.out.println(toOutput);
 							}
 						}else{
-							System.out.println("Matriks bukan persegi");
+							// output file
+							String toOutput;
+							System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+							System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+							String namafile = ingput.nextLine();
+							M.createfile(namafile);
+							toOutput = "Matriks bukan persegi";
+							M.outputfile(toOutput, namafile);
+							System.out.println(toOutput);
 						}
 					}
 				}

@@ -94,10 +94,23 @@ class Matriks{
 
 	void tulisMatriks() {
 		int i,j;
+		String toOutput;
+
+		Scanner ingput = new Scanner(System.in);
+		System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+		System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+		String namafile = ingput.nextLine();
+		//create file dulu
+		createfile(namafile);
+		outputfile("Matriks yang dihasilkan adalah: ", namafile);
+
 		for (i=0; i<this.brs; i++){
+			toOutput = "";
 			for (j=0; j<this.kol; j++){
 				System.out.print(this.muatriks[i][j]+"\t");
+				toOutput += this.muatriks[i][j] + " ";
 			}
+			outputfile(toOutput, namafile);
 			System.out.println();
 		}
 	}
