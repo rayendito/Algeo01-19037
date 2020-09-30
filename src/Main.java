@@ -144,18 +144,40 @@ class Main{
 						M.kol = brskol;
 						System.out.println("Masukkan elemen matriks(aij): ");
 						M.bacaMatriks();
+
+						// output file
+						String toOutput;
+						System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+						System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+						String namafile = ingput.nextLine();
+						//create file dulu
+						M.createfile(namafile);
 						if(M.isPersegi()){
-							System.out.println("Determinan matriks menggunakan metode reduksi baris adalah " + M.detRed());
+							toOutput = "Determinan matriks menggunakan metode reduksi baris adalah " + M.detRed();
+							M.outputfile(toOutput, namafile);
+							System.out.println(toOutput);
 						}else{
-							System.out.println("Matriks bukan persegi");
+							toOutput = "Matriks bukan persegi";
+							M.outputfile(toOutput, namafile);
+							System.out.println(toOutput);
 						}
 					}
 					else if(choose.equals("file")){
 						M.bacaFileMatriks();
+
+						// output file
+						String toOutput;
+						System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+						System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+						String namafile = ingput.nextLine();
 						if(M.isPersegi()){
-							System.out.println("Determinan matriks menggunakan metode reduksi baris adalah " + M.detRed());
+							toOutput = "Determinan matriks menggunakan metode reduksi baris adalah " + M.detRed();
+							M.outputfile(toOutput, namafile);
+							System.out.println(toOutput);
 						}else{
-							System.out.println("Matriks bukan persegi");
+							toOutput = "Matriks bukan persegi";
+							M.outputfile(toOutput, namafile);
+							System.out.println(toOutput);
 						}
 					}
 					
@@ -170,18 +192,38 @@ class Main{
 						M.kol = brskol;
 						System.out.println("Masukkan elemen matriks(aij): ");
 						M.bacaMatriks();
+
+						// output file
+						String toOutput;
+						System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+						System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+						String namafile = ingput.nextLine();
 						if(M.isPersegi()){
-							System.out.println("Determinan matriks menggunakan ekspansi kofaktor adalah " + M.detEx());
+							toOutput = "Determinan matriks menggunakan ekspansi kofaktor adalah " + M.detEx();
+							M.outputfile(toOutput, namafile);
+							System.out.println(toOutput);
 						}else{
-							System.out.println("Matriks bukan persegi");
+							toOutput = "Determinan matriks menggunakan ekspansi kofaktor adalah " + M.detEx();
+							M.outputfile(toOutput, namafile);
+							System.out.println(toOutput);
 						}
 					}
 					else if(choose.equals("file")){
 						M.bacaFileMatriks();
+
+						// output file
+						String toOutput;
+						System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+						System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+						String namafile = ingput.nextLine();
 						if(M.isPersegi()){
-							System.out.println("Determinan matriks menggunakan ekspansi kofaktor adalah " + M.detEx());
+							toOutput = "Determinan matriks menggunakan ekspansi kofaktor adalah " + M.detEx();
+							M.outputfile(toOutput, namafile);
+							System.out.println(toOutput);
 						}else{
-							System.out.println("Matriks bukan persegi");
+							toOutput = "Determinan matriks menggunakan ekspansi kofaktor adalah " + M.detEx();
+							M.outputfile(toOutput, namafile);
+							System.out.println(toOutput);
 						}
 					}
 				}
