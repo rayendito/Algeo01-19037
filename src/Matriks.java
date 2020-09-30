@@ -60,6 +60,37 @@ class Matriks{
 		}
 	}
 
+	//create file (Tested)
+	public void createfile(String namafile) {
+        try {
+        
+        File myObj = new File(namafile);
+		if (myObj.createNewFile()) {
+            System.out.println("File created: " + myObj.getName());
+        } else {
+            System.out.println("File already exists.");
+        }
+        } catch (IOException e) {
+        System.out.println("An error occurred.");
+        e.printStackTrace();
+        }
+    }
+
+	//append file
+    public void outputfile(String toprint, String namafile) {
+        try {
+        FileWriter fw = new FileWriter(namafile,true);
+    	BufferedWriter bw = new BufferedWriter(fw);
+    	PrintWriter thewriter = new PrintWriter(bw);
+        thewriter.println(toprint);
+        thewriter.close();
+        // System.out.println("Successfully wrote to the file.");
+        } 
+		catch (IOException e) {
+        System.out.println("An error occurred.");
+        e.printStackTrace();
+        }
+    }
 
 	void tulisMatriks() {
 		int i,j;
@@ -298,10 +329,21 @@ class Matriks{
 			}
 		}
 
-		// menampilkan solusi splnya
-		for (int baris=0; baris<=lastBaris(); baris++){
+		// output file
+		Scanner ingput = new Scanner(System.in);
+		System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN")
+		System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+		String namafile = ingput.nextLine();
+		//create file dulu
+		createfile(namafile);
+
+		// menampilkan solusi splnya dan menuliskan ke file
+		String toprint;
+		for (int baris=0; baris<=lastBaris(); baris++){ 
 			int bariske = baris+1;
-			System.out.println("X"+ bariske + " = " + this.muatriks[baris][0]);
+			toprint = "X"+ bariske + " = " + this.muatriks[baris][0];
+			outputfile(toprint, namafile);
+			System.out.println(toprint);
 		}
 	}
 
@@ -696,11 +738,3 @@ class Matriks{
 		
 	}
 }
-
-
-
-
-
-
-
-
