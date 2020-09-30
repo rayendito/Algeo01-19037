@@ -381,10 +381,21 @@ class Matriks{
 				}
 			}
 
+			// output file
+			Scanner ingput = new Scanner(System.in);
+			System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+			System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+			String namafile = ingput.nextLine();
+			//create file dulu
+			createfile(namafile);
+
 			// menampilkan solusi splnya
+			String toprint;
 			for (int baris=0; baris<=lastBaris(); baris++){
 				int bariske = baris+1;
-				System.out.println("X"+ bariske + " = " + this.muatriks[baris][0]);
+				toprint = "X"+ bariske + " = " + this.muatriks[baris][0];
+				outputfile(toprint, namafile);
+				System.out.println(toprint);
 			}
 		}
 	}
