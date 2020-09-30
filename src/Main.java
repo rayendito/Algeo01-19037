@@ -86,10 +86,10 @@ class Main{
 					String choose = ingput.nextLine();
 
 					if (choose.equals("manual")){
-						System.out.print("Masukkan jumlah baris/kolom(n): ");
-						brskol = input.nextInt();
-						M.brs = brskol;
-						M.kol = brskol;
+						System.out.print("Masukkan baris: ");
+						M.brs = ingput.nextInt();
+						System.out.print("Masukkan kolom: ");
+						M.kol = ingput.nextInt();
 						System.out.println("Masukkan elemen matriks(aij): ");
 						M.bacaMatriks();
 						if (M.isPersegi()){
@@ -104,12 +104,8 @@ class Main{
 					}
 					else if(choose.equals("file")){
 						M.bacaFileMatriks();
-						if (M.isPersegi()){
-							if (M.detRed() != 0){
-								M.splUsingInverse();
-							}else{
-								System.out.println("Determinan matriks sama dengan 0");
-							}
+						if (M.brs == (M.kol-1)){
+							M.splUsingInverseFile();
 						}else{
 							System.out.println("Matriks bukan persegi");
 						}

@@ -279,7 +279,7 @@ class Matriks{
 		}
 	}
 
-	// spl menggunakan metode matriks balikan
+	// spl menggunakan metode matriks balikan (Tested)
 	void splUsingInverse(){
 		inverseAdj();
 		double[][] toInverse = copyMatriks();
@@ -302,6 +302,48 @@ class Matriks{
 		for (int baris=0; baris<=lastBaris(); baris++){
 			int bariske = baris+1;
 			System.out.println("X"+ bariske + " = " + this.muatriks[baris][0]);
+		}
+	}
+
+	void splUsingInverseFile(){
+		// split matriks augmented jadi 2 matriks
+		double[][] toSplit = copyMatriks();
+		int kolterakhir = lastKolom();
+		// inverse matriks A
+		this.kol = this.kol-1;
+		for (int a=0; a<=lastBaris(); a++){
+			for(int b=0; b<=lastKolom();b++){
+				this.muatriks[a][b] = toSplit[a][b];
+			}
+		}
+		if (detRed() == 0){
+			System.out.println("Determinan matriks sama dengan 0");
+		}else{
+			// lanjutan inverse A ketika det A != 0
+			inverseAdj();
+			double[][] toInverse = copyMatriks();
+			// matriks b
+			this.kol = 1;
+			for (int c=0; c<=lastBaris(); c++){
+				this.muatriks[c][kolterakhir] = toSplit[c][kolterakhir];
+			}
+			double[][] matriks2 = copyMatriks();
+
+			// Ax = b -> x = inverse(A)b (kali matriksnya)
+			for (int i=0; i<=lastBaris(); i++){
+				for (int j=0; j<=lastKolom(); j++){
+					this.muatriks[i][j] = 0;
+					for (int k=0; k<=lastBaris(); k++){
+						this.muatriks[i][j] = this.muatriks[i][j] + toInverse[i][k]*matriks2[k][j];
+					}
+				}
+			}
+
+			// menampilkan solusi splnya
+			for (int baris=0; baris<=lastBaris(); baris++){
+				int bariske = baris+1;
+				System.out.println("X"+ bariske + " = " + this.muatriks[baris][0]);
+			}
 		}
 	}
 
