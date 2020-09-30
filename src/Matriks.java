@@ -331,7 +331,7 @@ class Matriks{
 
 		// output file
 		Scanner ingput = new Scanner(System.in);
-		System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN")
+		System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
 		System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
 		String namafile = ingput.nextLine();
 		//create file dulu
