@@ -644,9 +644,6 @@ class Matriks{
 		Scanner input = new Scanner (System.in);
 		double total = 0;
 		double x;
-		
-		this.tulisMatriks();
-		System.out.println("");
 			
 		Matriks M1 = new Matriks();
 		M1.muatriks = new double[this.kol-1][this.kol];
@@ -666,14 +663,8 @@ class Matriks{
 			}	
 		}
 		
-		M1.tulisMatriks();
-		System.out.println("");
-		
 		M1.gauss();
 		M1.gaussJordan();
-		
-		M1.tulisMatriks();
-		System.out.println("");
 		
 		hasil = hasil + M1.muatriks[0][this.kol-1];
 		for(i=1;i<M1.brs;i++) {
