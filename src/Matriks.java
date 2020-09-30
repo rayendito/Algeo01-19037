@@ -612,32 +612,21 @@ class Matriks{
 	
 	void interpolasi(){
 		int i,j;
-		Scanner input = new Scanner (System.in);
-		System.out.print("Masukkan jumlah n: ");
-		int n = input.nextInt();
-		double[][] masukan = new double[n][2];
-		double[][] polinom = new double[n][n+1];
-		//masukan (x,y)
-		for (i=0; i<n; i++){
-			for (j=0; j<2; j++){
-				masukan[i][j] = input.nextDouble();
-			}
-		}
+		double[][] polinom = new double[this.brs][this.brs+1];
 
 		//menjadikannya polinom berderajat 2
-		for (i=0; i<n; i++){
-			for (j=0; j<n+1; j++){
-				if (j==n) polinom[i][j] = masukan[i][1];
+		for (i=0; i<this.brs; i++){
+			for (j=0; j<this.brs+1; j++){
+				if (j==this.brs) polinom[i][j] = this.muatriks[i][1];
 				else{
-					polinom[i][j]=Math.pow(masukan[i][0],j);
+					polinom[i][j]=Math.pow(this.muatriks[i][0],j);
 				}
 			}
 		}
 
 		//menjadikan variabel-variabel berikut agar dapat dieliminasi
 		this.muatriks = polinom;
-		this.brs = n;
-		this.kol = n+1;
+		this.kol = this.brs+1;
 		
 		//lakukan eliminasi pada matriks
 		gauss();
@@ -646,11 +635,11 @@ class Matriks{
 		//cetak persamaan polinom dan hasil taksirnya
 		System.out.println("persamaannya adalah: ");
 		System.out.print("f(x) = ");
-		for(i=0; i<n; i++){
-			if (i==0) System.out.print(this.muatriks[i][n]);
+		for(i=0; i<this.brs; i++){
+			if (i==0) System.out.print(this.muatriks[i][this.brs]);
 			else{
-				if (this.muatriks[i][n] >= 0) System.out.print(" + "+this.muatriks[i][n]+"x^"+i);
-				else System.out.print(" "+this.muatriks[i][n]+"x^"+i);
+				if (this.muatriks[i][this.brs] >= 0) System.out.print(" + "+this.muatriks[i][this.brs]+"x^"+i);
+				else System.out.print(" "+this.muatriks[i][this.brs]+"x^"+i);
 			}
 		}
 		System.out.println("");
@@ -658,9 +647,10 @@ class Matriks{
 		//input nilai yang ingin ditaksir
 		double total=0;
 		System.out.print("Masukkan x yang ingin ditaksir: ");
+		Scanner input = new Scanner(System.in);
 		double taksir = input.nextDouble();
-		for(i=0; i<n; i++){
-			total += this.muatriks[i][n]*Math.pow(taksir,i);
+		for(i=0; i<this.brs; i++){
+			total += this.muatriks[i][this.brs]*Math.pow(taksir,i);
 		}
 		System.out.println("Hasil taksiran untuk x adalah = "+total);
 	}
