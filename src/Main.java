@@ -353,7 +353,20 @@ class Main{
 					M.regresi();
 				}
 				else if(choose.equals("file")){
-					M.bacaFileMatriks();
+					int i,j;
+					Matriks M1 = new Matriks();
+					M1.bacaFileMatriks();
+					M.brs = M1.brs;
+					M.kol = M1.kol + 1;
+					M.muatriks = new double[M.brs][M.kol];
+					for (i=0; i<M.brs; i++){
+						M.muatriks[i][0] = 1;
+					}
+					for (i=0; i<M1.brs; i++){
+						for (j=0; j<M1.kol; j++){
+							M.muatriks[i][j+1] = M1.muatriks[i][j];
+						}
+					}
 					M.regresi();
 				}
 				
