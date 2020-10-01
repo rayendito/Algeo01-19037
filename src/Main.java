@@ -363,17 +363,3 @@ class Main{
 		}
 	}
 }
-
-
-/*
-Scanner ingput = new Scanner(System.in);
-System.out.print("Manual atau File? (manual/file) ");
-String choose = ingput.nextLine();
-
-if (choose.equals("manual")){
-
-}
-else if(choose.equals("file")){
-
-}
-*/

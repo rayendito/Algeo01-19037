@@ -154,27 +154,6 @@ class Matriks{
 		return nol;
 	}
 
-	// urutmatriks biar gaus,determinan lancarr (Tested)
-	void urutMatriks(){
-		// urut per kolom
-		int idxpertama = 0;
-		int j = 0;
-		while ((j<=lastKolom()) && (idxpertama != lastBaris())){
-			for(int i=idxpertama; i<=lastBaris(); i++){
-				for(int k=idxpertama; k<=lastBaris()-1; k++){
-					if (this.muatriks[k+1][j] > this.muatriks[k][j]){
-						tukarBaris(k, k+1);
-					}
-				}
-			}
-			// mencari kolom 0 pertama
-			while ((idxpertama<=lastBaris()) && (this.muatriks[idxpertama][j] != 0)){
-				idxpertama++;
-			}
-			j++;
-		}
-	}
-
 	// copyMatriks (Tested) cara pakai -> double[][] variable = copyMatriks()
 	public double[][] copyMatriks(){
 		double[][] copy = new double[this.brs][this.kol];
