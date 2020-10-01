@@ -15,16 +15,14 @@ Oleh :
 </ul>
 
 ## Cara menjalankan program (untuk windows):
-<ol>
-<li> Buka terminal dan masuklah ke direktori bin pada repository ini. pada terminal</li>
+* Buka terminal dan masuklah ke direktori bin pada repository ini. pada terminal
 ```bash
 $ cd Algeo01-19037/bin
 ```
-<li> Pastikan terdapat 2 file yaitu Matriks.class dan Main.class lalu pada terminal</li>
+* Pastikan terdapat 2 file yaitu Matriks.class dan Main.class lalu pada terminal
 ```bash
 $ java Main
 ```
-<li> Silahkan pilih menu yang diinginkan! </li>
-</ol>
+* Silahkan pilih menu yang diinginkan!
 
-<p> TERIMA KASIH </p>
+## TERIMA KASIH
