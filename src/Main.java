@@ -44,14 +44,16 @@ class Main{
 						M.gauss();
 						System.out.println("Ini adalah matriks setelah eliminasi Gauss:");
 						M.tulisMatriks();
-						M.solusiG();
+						M.gaussJordan();
+						M.solusiGJ();
 					}
 					else if(choose.equals("file")){
 						M.bacaFileMatriks();
 						M.gauss();
 						System.out.println("Ini adalah matriks setelah eliminasi Gauss:");
 						M.tulisMatriks();
-						M.solusiG();
+						M.gaussJordan();
+						M.solusiGJ();
 
 					}
 				}else if (submenu == 2){

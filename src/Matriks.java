@@ -477,6 +477,11 @@ class Matriks{
 	}
 	
 	public void solusiG() {
+		Scanner ingput = new Scanner (System.in);
+		System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+		System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+		String namafile = ingput.nextLine();
+		this.createfile(namafile);
 		int i,j,k,l;
 		int varnumber = 97;
 		char var;
@@ -489,7 +494,10 @@ class Matriks{
 			}
 		}
 		if(!(konsisten)) {
-			System.out.println("SPL tidak memiliki solusi");
+			String toprint;
+			toprint = "SPL tidak memiliki solusi";
+			outputfile(toprint, namafile);
+			System.out.println(toprint);
 		}
 		else {
 			for(i=0;i<=this.brs-1;i++) {
@@ -513,12 +521,19 @@ class Matriks{
 					hasil = "x" + (i+1) + " = " + var;
 					varnumber = varnumber + 1;
 				}
+				outputfile(hasil, namafile);
 				System.out.println(hasil);
 			}
 		}
 	}
 	
 	public void solusiGJ() {
+		// output file
+		Scanner ingput = new Scanner (System.in);
+		System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+		System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+		String namafile = ingput.nextLine();
+		this.createfile(namafile);
 		int i,j,k,l,m;
 		int varnumber = 97;
 		boolean konsisten = true;
@@ -534,7 +549,10 @@ class Matriks{
 			}
 		}
 		if(!(konsisten)) {
-			System.out.println("SPL tidak memiliki solusi");
+			String toprint;
+			toprint = "SPL tidak memiliki solusi";
+			outputfile(toprint, namafile);
+			System.out.println(toprint);
 		}
 		else {
 			for(i=0;i<=this.brs-1;i++) {
@@ -581,7 +599,10 @@ class Matriks{
 				}
 			}
 			for(m=0;m<this.kol-1;m++) {
-				System.out.println("x" + (m+1) + " = " + storage[m]);
+				String toprint;
+				toprint = "x" + (m+1) + " = " + storage[m];
+				outputfile(toprint, namafile);
+				System.out.println(toprint);
 			}
 		 }
 	}	
@@ -591,6 +612,12 @@ class Matriks{
 	}
 	
 	void cramer(){
+		// output file
+		Scanner ingput = new Scanner (System.in);
+		System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+		System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+		String namafile = ingput.nextLine();
+		this.createfile(namafile);
 		if(this.brs == this.kol -1) {
 			int i,j,k,l;
 			double hasil,detAwal;
@@ -616,7 +643,10 @@ class Matriks{
 			//determinan awal
 			detAwal = M1.detRed();
 			if(detAwal == 0) {
-				System.out.println("matriks tidak memiliki solusi unik");
+				String toprint;
+				toprint = "matriks tidak memiliki solusi unik";
+				outputfile(toprint, namafile);
+				System.out.println(toprint);
 			}
 			else {
 				for(j=0;j<=M1.lastKolom();j++) {
@@ -635,13 +665,21 @@ class Matriks{
 					
 					//determinan setelah substitusi
 					hasil = M2.detRed();
-					//setiap variabel dinamai huruf "x" diikuti angka urutan variabel tersebut
-					System.out.println("x" + (j+1) + " = " + (hasil / detAwal));
+					
+					
+					String toprint;
+					toprint = "x" + (j+1) + " = " + (hasil / detAwal);
+					outputfile(toprint, namafile);
+					System.out.println(toprint);
+					
 				}
 			}
 		}
 		else {
-			System.out.println("matriks tidak valid");
+			String toprint;
+			toprint = "matriks tidak valid";
+			outputfile(toprint, namafile);
+			System.out.println(toprint);
 		}
 	}
 
@@ -786,6 +824,12 @@ class Matriks{
 	}
 	
 	void regresi() {
+		// output file
+		Scanner ingput = new Scanner (System.in);
+		System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+		System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+		String namafile = ingput.nextLine();
+		this.createfile(namafile);
 		int i,j,k,l;
 		String hasil = "y = ";
 		Scanner input = new Scanner (System.in);
@@ -822,6 +866,7 @@ class Matriks{
 				hasil = hasil + " + " + (-(M1.muatriks[i][this.kol-1])) + " x" + i;
 			}
 		}
+		outputfile(hasil, namafile);
 		System.out.println(hasil);
 		
 		total = total + M1.muatriks[0][this.kol-1];
@@ -830,7 +875,9 @@ class Matriks{
 			x = input.nextDouble();
 			total = total + (x * M1.muatriks[j][this.kol-1]);
 		}
-		System.out.println("Taksiran nilai fungsi adalah: " + total);
-		
+		String toprint;
+		toprint = "Taksiran nilai fungsi adalah: " + total;
+		outputfile(toprint, namafile);
+		System.out.println(toprint);
 	}
 }
