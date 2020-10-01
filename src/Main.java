@@ -246,13 +246,37 @@ class Main{
 						M.brs = input.nextInt();
 						M.kol = M.brs;
 						M.bacaMatriks();
-						M.balikanGJordan();
-						M.tulisMatriks();
+						if (M.detRed() != 0){
+							M.balikanGJordan();
+							M.tulisMatriks();
+						}else{
+							// output file
+							String toOutput;
+							System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+							System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+							String namafile = ingput.nextLine();
+							M.createfile(namafile);
+							toOutput = "Determinan matriks sama dengan 0";
+							M.outputfile(toOutput, namafile);
+							System.out.println(toOutput);
+						}
 					}
 					else if(choose.equals("file")){
 						M.bacaFileMatriks();
-						M.balikanGJordan();
-						M.tulisMatriks();
+						if (M.detRed() != 0){
+							M.balikanGJordan();
+							M.tulisMatriks();
+						}else{
+							// output file
+							String toOutput;
+							System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
+							System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
+							String namafile = ingput.nextLine();
+							M.createfile(namafile);
+							toOutput = "Determinan matriks sama dengan 0";
+							M.outputfile(toOutput, namafile);
+							System.out.println(toOutput);
+						}
 					}
 					
 				}else if (submenu == 2){
