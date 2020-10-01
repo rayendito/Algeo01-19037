@@ -380,7 +380,7 @@ class Matriks{
 			// matriks b
 			this.kol = 1;
 			for (int c=0; c<=lastBaris(); c++){
-				this.muatriks[c][kolterakhir] = toSplit[c][kolterakhir];
+				this.muatriks[c][0] = toSplit[c][kolterakhir];
 			}
 			double[][] matriks2 = copyMatriks();
 
