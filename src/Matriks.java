@@ -455,57 +455,6 @@ class Matriks{
 		}
 	}
 	
-	public void solusiG() {
-		Scanner ingput = new Scanner (System.in);
-		System.out.println("PASTIKAN NAMA FILE BELUM PERNAH DIGUNAKAN AGAR MENDAPAT HASIL YANG DIINGINKAN");
-		System.out.print("Masukkan nama output file dengan .txt contoh (beres.txt): ");
-		String namafile = ingput.nextLine();
-		this.createfile(namafile);
-		int i,j,k,l;
-		int varnumber = 97;
-		char var;
-		boolean konsisten = true;
-		String hasil = "";
-		for(l=0;l<=this.brs-1;l++) {
-			if(this.inkonsisten(l)) {
-				konsisten = false;
-				break;
-			}
-		}
-		if(!(konsisten)) {
-			String toprint;
-			toprint = "SPL tidak memiliki solusi";
-			outputfile(toprint, namafile);
-			System.out.println(toprint);
-		}
-		else {
-			for(i=0;i<=this.brs-1;i++) {
-				if(!(this.barisKosong(i))) {
-					if(this.muatriks[i][i] == 1) {
-						hasil = "x" + (i+1) + " = " + this.muatriks[i][this.kol-1];
-						for(j=0;j<=this.kol-2;j++) {
-							if((j != i) && (this.muatriks[i][j] != 0)) {
-								if(this.muatriks[i][j] < 0) {
-								hasil = hasil + " + " + (-(this.muatriks[i][j])) + " x" + (j+1); 
-								}
-								else {
-									hasil = hasil + " - " + this.muatriks[i][j] + " x" + (j+1); 
-								}
-							}
-						}
-					}
-				}
-				else if(this.muatriks[i][i] == 0) {
-					var = (char)varnumber;
-					hasil = "x" + (i+1) + " = " + var;
-					varnumber = varnumber + 1;
-				}
-				outputfile(hasil, namafile);
-				System.out.println(hasil);
-			}
-		}
-	}
-	
 	public void solusiGJ() {
 		// output file
 		Scanner ingput = new Scanner (System.in);
