@@ -476,7 +476,7 @@ class Matriks{
 		}
 	}
 	
-	public void solusi() {
+	public void solusiG() {
 		int i,j,k,l;
 		int varnumber = 97;
 		char var;
@@ -517,6 +517,74 @@ class Matriks{
 			}
 		}
 	}
+	
+	public void solusiGJ() {
+		int i,j,k,l,m;
+		int varnumber = 97;
+		boolean konsisten = true;
+		String hasil;
+		String[] storage = new String[this.kol-1];
+		for(j=0;j<this.kol-1;j++) {
+			storage[j] = "";
+		}
+		for(l=0;l<=this.brs-1;l++) {
+			if(this.inkonsisten(l)) {
+				konsisten = false;
+				break;
+			}
+		}
+		if(!(konsisten)) {
+			System.out.println("SPL tidak memiliki solusi");
+		}
+		else {
+			for(i=0;i<=this.brs-1;i++) {
+				for(j=0;j<=this.kol-2;j++) {
+					if(this.muatriks[i][j] == 1) {
+						hasil = this.muatriks[i][this.kol-1] + "";
+						for(k=j+1;k<=this.kol-2;k++) {
+							if(this.muatriks[i][k] != 0) {
+								if(this.muatriks[i][k] < 0) {
+									if(storage[k] == "") {
+										storage[k] = (char)varnumber + "";
+										varnumber = varnumber + 1;
+									}
+									if(-(this.muatriks[i][k]) == 1) {
+										hasil = hasil + " + " + storage[k];
+									}
+									else {
+										hasil = hasil + " + " + (-(this.muatriks[i][k])) + storage[k];
+									}
+								}
+								else if(this.muatriks[i][k] > 0) {
+									if(storage[k] == "") {
+										storage[k] = (char)varnumber + "";
+										varnumber = varnumber + 1;	
+									}
+									if(this.muatriks[i][k] == 1) {
+										hasil = hasil + " - " + storage[k]; 
+									}
+									else {
+										hasil = hasil + " - " + (this.muatriks[i][k]) + storage[k];
+									}
+								}
+							}
+						}
+						storage[j] = hasil;
+						break;
+					}
+				}
+			}
+			for(m=0;m<this.kol-1;m++) {
+				if(storage[m] == "") {
+					storage[m] = (char)varnumber + "";
+					varnumber = varnumber + 1;
+				}
+			}
+			for(m=0;m<this.kol-1;m++) {
+				System.out.println("x" + (m+1) + " = " + storage[m]);
+			}
+		 }
+	}	
 
 	public boolean isPersegi() {
 		return(this.brs == this.kol);

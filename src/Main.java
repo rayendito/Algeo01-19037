@@ -44,14 +44,14 @@ class Main{
 						M.gauss();
 						System.out.println("Ini adalah matriks setelah eliminasi Gauss:");
 						M.tulisMatriks();
-						M.solusi();
+						M.solusiG();
 					}
 					else if(choose.equals("file")){
 						M.bacaFileMatriks();
 						M.gauss();
 						System.out.println("Ini adalah matriks setelah eliminasi Gauss:");
 						M.tulisMatriks();
-						M.solusi();
+						M.solusiG();
 
 					}
 				}else if (submenu == 2){
@@ -69,7 +69,7 @@ class Main{
 						M.gaussJordan();
 						System.out.println("Ini adalah matriks setelah eliminasi Gauss-Jordan:");
 						M.tulisMatriks();
-						M.solusi();
+						M.solusiGJ();
 					}
 					else if(choose.equals("file")){
 						M.bacaFileMatriks();
@@ -77,7 +77,7 @@ class Main{
 						M.gaussJordan();
 						System.out.println("Ini adalah matriks setelah eliminasi Gauss-Jordan:");
 						M.tulisMatriks();
-						M.solusi();
+						M.solusiGJ();
 
 					}
 				}else if (submenu == 3){
